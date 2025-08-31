@@ -1,5 +1,24 @@
 # n8n + Postgres + Redis + Caddy — Simple Compose (Local by default, Prod via profile)
 
+## Why Create This Docker Repo
+
+We use **n8n** both internally and with our clients. Frequently we need a fast, reliable way to spin up a self-hosted instance—whether for our own development, or to hand off to a client’s IT team for their developers or production environment.
+
+This repo provides a **ready-to-use Docker Compose setup** that follows a consistent, secure pattern:
+
+- **PostgreSQL** for durable workflow and credential storage  
+- **Redis** for queueing and caching  
+- **Caddy** for automatic HTTPS, so n8n can be exposed safely on a production server (internally or on the internet)  
+
+By standardizing on this stack, we make it simple to install, secure, and share n8n environments across teams.
+
+## Who This Is For
+
+- **Developers** — who want a quick local n8n environment with PostgreSQL + Redis behind it.  
+- **IT / DevOps teams** — who need a secure, repeatable way to deploy n8n into production with SSL built-in.  
+- **Clients & partners** — who prefer a hand-off setup that “just works” without needing to piece together Postgres, Redis, and HTTPS manually.  
+
+
 ## What is this?
 A compact Docker Compose stack to self-host **n8n** with **PostgreSQL** (persistence), **Redis** (queues), and **Caddy** (automatic HTTPS).  
 - **Local by default**: `docker compose up -d` exposes n8n at **http://localhost:5678**.
