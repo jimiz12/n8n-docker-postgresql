@@ -1,0 +1,24 @@
+{
+  email {env.ACME_EMAIL}
+  # acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+}
+
+{env.N8N_HOSTNAME} {
+  encode zstd gzip
+  log
+
+  request_body {
+    max_size 100MB
+  }
+
+  reverse_proxy n8n:5678 {
+    header_up X-Forwarded-Proto https
+    header_up X-Forwarded-Host {host}
+    header_up Host {host}
+    transport http {
+      dial_timeout 10s
+      read_timeout  600s
+      write_timeout 600s
+    }
+  }
+}
