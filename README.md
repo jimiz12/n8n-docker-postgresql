@@ -1,4 +1,4 @@
-# n8n + Postgres + Redis + Caddy — Simple Compose (Local by default, Prod via profile)
+# n8n Self-host with  Postgres + Redis + Caddy — Docker Compose (Local by default, Prod via profile)
 
 ## Why Create This Docker Repo
 
