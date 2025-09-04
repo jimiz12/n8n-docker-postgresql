@@ -1,9 +1,9 @@
 {
-  email {ACME_EMAIL}
+  email {$ACME_EMAIL}
   # acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
 }
 
-{N8N_HOSTNAME} {
+{$N8N_HOSTNAME} {
   encode zstd gzip
   log
 
