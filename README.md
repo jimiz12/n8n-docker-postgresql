@@ -28,6 +28,7 @@ A compact Docker Compose stack to self-host **n8n** with **PostgreSQL** (persist
 
 ### Local (default)
 ```bash
+git close https://github.com/jimiz12/n8n-docker-postgresql.git
 cp env.example .env
 # edit .env: set POSTGRES_PASSWORD and N8N_ENCRYPTION_KEY
 docker compose up -d
@@ -36,6 +37,8 @@ open http://localhost:5678
 
 ### Production (HTTPS with Caddy)
 ```bash
+git close https://github.com/jimiz12/n8n-docker-postgresql.git
+cp env.example .env
 # in .env set:
 # N8N_HOSTNAME=your.domain
 # ACME_EMAIL=you@example.com
