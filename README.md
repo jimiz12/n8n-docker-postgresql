@@ -28,7 +28,7 @@ A compact Docker Compose stack to self-host **n8n** with **PostgreSQL** (persist
 
 ### Local (default)
 ```bash
-git close https://github.com/jimiz12/n8n-docker-postgresql.git
+git clone https://github.com/jimiz12/n8n-docker-postgresql.git
 cp env.example .env
 # edit .env: set POSTGRES_PASSWORD and N8N_ENCRYPTION_KEY
 docker compose up -d
@@ -37,7 +37,7 @@ open http://localhost:5678
 
 ### Production (HTTPS with Caddy)
 ```bash
-git close https://github.com/jimiz12/n8n-docker-postgresql.git
+git clone https://github.com/jimiz12/n8n-docker-postgresql.git
 cp env.example .env
 # in .env set:
 # N8N_HOSTNAME=your.domain
@@ -158,4 +158,13 @@ Run workers alongside your main `n8n`:
 ```bash
 docker compose up -d n8n-worker
 docker compose up -d --scale n8n-worker=3
+```
+
+### Ubuntu Commands:
+```bash
+# Common prereqs (Ubuntu 24.04)
+sudo apt-get update && sudo apt-get install -y ca-certificates curl gnupg
+# Install Docker using the official repo:
+curl -fsSL https://get.docker.com | sudo sh
+sudo usermod -aG docker $USER
 ```
