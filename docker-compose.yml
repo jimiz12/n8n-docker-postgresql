@@ -55,7 +55,8 @@ services:
       # Protocol remains http; external URLs come from WEBHOOK_URL
       N8N_PROTOCOL: ${N8N_PROTOCOL:-http}
       WEBHOOK_URL: ${N8N_HOSTNAME:+https://}${N8N_HOSTNAME:-http://localhost:5678}/
-
+      # Enable community nodes as tools
+      N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE: true
       # Timezone
       GENERIC_TIMEZONE: ${GENERIC_TIMEZONE:-America/Detroit}
 
