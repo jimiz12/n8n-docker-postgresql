@@ -24,6 +24,9 @@ A compact Docker Compose stack to self-host **n8n** with **PostgreSQL** (persist
 - **Local by default**: `docker compose up -d` exposes n8n at **http://localhost:5678**.
 - **Production via profile**: add `--profile prod` and set `N8N_HOSTNAME` + `ACME_EMAIL` for HTTPS on ports 80/443.
 
+![Alt text](relative%20path/n8n-self-host-postgres.png?raw=true "Self Host N8N")
+
+
 ## Quick start
 
 ### Local (default)
@@ -47,18 +50,6 @@ docker compose --profile prod up -d
 # visit: https://your.domain/
 ```
 
-## Viewing Logs
-
-To view logs for specific services, use Docker Compose:
-
-```bash
-docker compose logs -f n8n
-docker compose logs -f caddy
-```
-
-- `-f` tails the logs (like `tail -f`).
-- Replace `n8n` or `caddy` with any service name from your `docker-compose.yml`.
-
 ## Generate N8N_ENCRYPTION_KEY
 **macOS/Linux**
 ```bash
@@ -71,6 +62,20 @@ $bytes = New-Object byte[] 32
 $hex = -join ($bytes | ForEach-Object { $_.ToString("x2") })
 Add-Content -Path .env -Value ("N8N_ENCRYPTION_KEY=$hex")
 ```
+
+
+## Viewing Logs
+
+To view logs for specific services, use Docker Compose:
+
+```bash
+docker compose logs -f n8n
+docker compose logs -f caddy
+```
+
+- `-f` tails the logs (like `tail -f`).
+- Replace `n8n` or `caddy` with any service name from your `docker-compose.yml`.
+
 
 ## Data locations (named volumes)
 - Postgres → `postgres_data`
