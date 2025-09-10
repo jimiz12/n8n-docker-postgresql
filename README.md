@@ -24,7 +24,7 @@ A compact Docker Compose stack to self-host **n8n** with **PostgreSQL** (persist
 - **Local by default**: `docker compose up -d` exposes n8n at **http://localhost:5678**.
 - **Production via profile**: add `--profile prod` and set `N8N_HOSTNAME` + `ACME_EMAIL` for HTTPS on ports 80/443.
 
-![Alt text](relative%20path/n8n-self-host-postgres.png?raw=true "Self Host N8N")
+![Alt text](/n8n-self-host-postgres.png?raw=true "Self Host N8N")
 
 
 ## Quick start
