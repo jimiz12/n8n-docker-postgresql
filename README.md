@@ -1,4 +1,14 @@
-# n8n Self-host with  Postgres + Redis + Caddy — Docker Compose (Local by default, Prod via profile)
+# n8n Self-host with Postgres + Redis + Caddy — Docker Compose
+
+[![Watch the video](https://img.youtube.com/vi/_ozDuDA2BZ0/0.jpg)](https://www.youtube.com/watch?v=_ozDuDA2BZ0&t=1072s)
+**▶️ [Watch a full walkthrough on YouTube](https://www.youtube.com/watch?v=_ozDuDA2BZ0&t=1072s)**
+
+## Overview
+A compact Docker Compose stack to self-host **n8n** with **PostgreSQL** (persistence), **Redis** (queues), and **Caddy** (automatic HTTPS).  
+- **Local by default**: `docker compose up -d` exposes n8n at **http://localhost:5678**.
+- **Production via profile**: add `--profile prod` and set `N8N_HOSTNAME` + `ACME_EMAIL` for HTTPS on ports 80/443.
+
+![Self Host N8N](/n8n-self-host-postgres.png?raw=true "Self Host N8N")
 
 ## Why Create This Docker Repo
 
@@ -19,15 +29,7 @@ By standardizing on this stack, we make it simple to install, secure, and share 
 - **Clients & partners** — who prefer a hand-off setup that “just works” without needing to piece together Postgres, Redis, and HTTPS manually.  
 
 
-## What is this?
-A compact Docker Compose stack to self-host **n8n** with **PostgreSQL** (persistence), **Redis** (queues), and **Caddy** (automatic HTTPS).  
-- **Local by default**: `docker compose up -d` exposes n8n at **http://localhost:5678**.
-- **Production via profile**: add `--profile prod` and set `N8N_HOSTNAME` + `ACME_EMAIL` for HTTPS on ports 80/443.
-
-![Alt text](/n8n-self-host-postgres.png?raw=true "Self Host N8N")
-
-
-## Quick start
+## Quick Start
 
 ### Local (default)
 ```bash
@@ -49,6 +51,11 @@ cp env.example .env
 docker compose --profile prod up -d
 # visit: https://your.domain/
 ```
+
+## Requirements
+- Docker
+- Docker Compose
+- (Optional) Make
 
 ## Generate N8N_ENCRYPTION_KEY
 **macOS/Linux**
@@ -77,7 +84,7 @@ docker compose logs -f caddy
 - Replace `n8n` or `caddy` with any service name from your `docker-compose.yml`.
 
 
-## Data locations (named volumes)
+## Data Locations (Named Volumes)
 - Postgres → `postgres_data`
 - Redis → `redis_data`
 - n8n → `n8n_data`
@@ -100,7 +107,7 @@ docker volume create n8n_data
 docker run --rm -v n8n_data:/data -v "$PWD":/backup alpine   sh -c "cd /data && tar xzf /backup/n8n_data-backup.tgz"
 ```
 
-## Backup script & Makefile
+## Backup Script & Makefile
 
 This repo also includes a helper **backup.sh** script and **Makefile**.
 
@@ -128,7 +135,7 @@ This runs:
 bash backup.sh --output ./backups --include-caddy --label manual
 ```
 
-## Adding a Worker (optional, advanced)
+## Adding a Worker (Optional, Advanced)
 For heavy loads, you can extend `docker-compose.yml` with an `n8n-worker` service.
 
 ### Example snippet:
