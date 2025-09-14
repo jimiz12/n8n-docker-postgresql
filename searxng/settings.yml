@@ -1,0 +1,20 @@
+use_default_settings: true
+
+server:
+  # base_url comes from SEARXNG_BASE_URL in docker-compose
+  secret_key: "%(ENV_SEARXNG_SECRET)s"   # <- pulled from .env
+  limiter: false
+  image_proxy: true
+
+ui:
+  static_use_hash: true
+
+redis:
+  url: redis://redis:6379/0
+  # If your Redis instance requires a password, use this instead:
+  # url: redis://:${ENV_REDIS_PASSWORD}@redis:6379/0
+
+search:
+  formats:
+    - html
+    - json

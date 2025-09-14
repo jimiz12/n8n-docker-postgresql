@@ -5,6 +5,7 @@
 
 ## Overview
 A compact Docker Compose stack to self-host **n8n** with **PostgreSQL** (persistence), **Redis** (queues), and **Caddy** (automatic HTTPS).  
+- **SearXNG** - Added SearXNG for AI search meta data.
 - **Local by default**: `docker compose up -d` exposes n8n at **http://localhost:5678**.
 - **Production via profile**: add `--profile prod` and set `N8N_HOSTNAME` + `ACME_EMAIL` for HTTPS on ports 80/443.
 
@@ -57,10 +58,11 @@ docker compose --profile prod up -d
 - Docker Compose
 - (Optional) Make
 
-## Generate N8N_ENCRYPTION_KEY
+## Generate N8N_ENCRYPTION_KEY and SEARXNG_SECRET
 **macOS/Linux**
 ```bash
 echo "N8N_ENCRYPTION_KEY=$(openssl rand -hex 32)" >> .env
+echo "SEARXNG_SECRET=$(openssl rand -hex 32)" >> .env
 ```
 **Windows PowerShell**
 ```powershell
