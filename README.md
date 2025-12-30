@@ -55,7 +55,20 @@ cp env.example .env
 # N8N_HOSTNAME=your.domain
 # ACME_EMAIL=you@example.com
 # PRODUCTION=true
-docker compose --profile prod up -d
+docker compose --profile caddy up -d
+# visit: https://your.domain/
+```
+
+### Production (HTTPS with Cloudflared)
+```bash
+git clone https://github.com/jimiz12/n8n-docker-postgresql.git
+cp env.example .env
+# in .env set:
+# N8N_HOSTNAME=your.domain
+# ACME_EMAIL=you@example.com
+# PRODUCTION=true
+# CLOUDFLARE_TUNNEL_TOKEN=<YOUR_TUNNEL_TOKEN>
+docker compose --profile cloudflared up -d
 # visit: https://your.domain/
 ```
 
