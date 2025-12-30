@@ -41,8 +41,8 @@ services:
   n8n:
     image: n8nio/n8n:latest
     # No public port mapping - accessed via cloudflared tunnel
-    expose:
-      - "5678"
+    ports:
+      - "5678:5678"
     environment:
       # Database
       DB_TYPE: postgresdb
