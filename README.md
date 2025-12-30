@@ -72,6 +72,11 @@ docker compose --profile cloudflared up -d
 # visit: https://your.domain/
 ```
 
+### Attach n8n to existing cloudfalred tunnel network
+```bash
+docker network connect n8n_network cloudflared-tunnel
+```
+
 ## Requirements
 - Docker
 - Docker Compose

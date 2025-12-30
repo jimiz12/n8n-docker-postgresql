@@ -18,7 +18,6 @@ services:
       retries: 5
     networks:
       - app
-      - bridge
     restart: unless-stopped
 
   redis:
@@ -37,7 +36,6 @@ services:
       retries: 5
     networks:
       - app
-      - bridge
     restart: unless-stopped
 
   n8n:
@@ -87,7 +85,6 @@ services:
       - n8n_data:/home/node/.n8n
     networks:
       - app
-      - bridge
     restart: unless-stopped
 
   # NEW: SearXNG
@@ -121,7 +118,6 @@ services:
         condition: service_healthy
     networks:
       - app
-      - bridge
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/healthz"]
       interval: 10s
@@ -154,15 +150,13 @@ services:
       TUNNEL_TOKEN: ${CLOUDFLARE_TUNNEL_TOKEN}
     networks:
       - app
-      - bridge
     restart: unless-stopped
     profiles: ["cloudflared"]
 
 networks:
   app:
-  bridge:
-    external: true
-    name: bridge
+    name: n8n_network
+    driver: bridge
 
 volumes:
   postgres_data:
