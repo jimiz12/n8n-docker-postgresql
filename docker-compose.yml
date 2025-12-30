@@ -40,7 +40,6 @@ services:
 
   n8n:
     image: n8nio/n8n:latest
-    # No public port mapping - accessed via cloudflared tunnel
     ports:
       - "5678:5678"
     environment:
