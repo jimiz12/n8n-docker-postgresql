@@ -83,6 +83,7 @@ services:
         condition: service_healthy
     volumes:
       - n8n_data:/home/node/.n8n
+      - n8n_files:/tmp/n8n-files
     networks: [app]
     restart: unless-stopped
 
@@ -156,5 +157,6 @@ volumes:
   postgres_data:
   redis_data:
   n8n_data:
+  n8n_files:
   caddy_data:
   caddy_config:
