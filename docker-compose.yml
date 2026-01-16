@@ -33,6 +33,7 @@ services:
     restart: unless-stopped
 
   n8n:
+    build: .
     image: n8nio/n8n:latest
     # Local default: expose 5678 
     ports:
@@ -46,6 +47,11 @@ services:
       DB_POSTGRESDB_USER: ${POSTGRES_USER}
       DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASSWORD}
      
+      # Workflow flags
+      N8N_EXECUTE_COMMAND_ENABLED:  true
+      NODE_FUNCTION_ALLOW_EXTERNAL: pdf-parse
+      NODES_EXCLUDE: "[]"
+      N8N_RESTRICT_FILE_ACCESS_TO: /tmp/n8n-files
 
       # Encryption
       N8N_ENCRYPTION_KEY: ${N8N_ENCRYPTION_KEY}
@@ -77,6 +83,7 @@ services:
         condition: service_healthy
     volumes:
       - n8n_data:/home/node/.n8n
+      - n8n_files:/tmp/n8n-files
     networks: [app]
     restart: unless-stopped
 
@@ -150,5 +157,6 @@ volumes:
   postgres_data:
   redis_data:
   n8n_data:
+  n8n_files:
   caddy_data:
   caddy_config:
