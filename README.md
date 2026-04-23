@@ -23,6 +23,7 @@ We use **n8n** both internally and with our clients. Frequently we need a fast, 
 This repo provides a **ready-to-use Docker Compose setup** that follows a consistent, secure pattern:
 
 - **PostgreSQL** for durable workflow and credential storage  
+- Updated Postgress to use Vector
 - **Redis** for queueing and caching  
 - **Caddy** for automatic HTTPS, so n8n can be exposed safely on a production server (internally or on the internet)  
 - **SearXNG** for web searches in AI workflows
